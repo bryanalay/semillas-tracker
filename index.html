@@ -54,6 +54,7 @@
         // Mostrar la fecha actual en la zona horaria del usuario
         const fechaDiv = document.getElementById('fecha-actual');
         const ahora = new Date();
+        const entorno = getElementById('entorno').value;
         const fechaString = ahora.toLocaleString('es-ES', {
             timeZone: 'America/Guayaquil',
             year: 'numeric',
@@ -77,8 +78,9 @@
             }
 
             const formData = new FormData(form);
+            console.log(entorno);
 
-            fetch('https://l6ysqp1oqe8rpssi03ripj2d.hooks.n8n.cloud/webhook/abc43991-bf58-44c6-b8bc-5689204fe4ee', {
+            fetch(`https://l6ysqp1oqe8rpssi03ripj2d.hooks.n8n.cloud/${entorno=='test'?'webhook-test':'webhook'}/abc43991-bf58-44c6-b8bc-5689204fe4ee`, {
                 method: 'POST',
                 body: formData
             })
